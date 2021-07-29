@@ -7,15 +7,18 @@ import android.graphics.drawable.GradientDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.Animation
+import com.example.gradienttest.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var bnd : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        bnd = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bnd.root)
 
-        val animDrawable = root_layout.background as AnimationDrawable
+        val animDrawable = bnd.root.background as AnimationDrawable
         animDrawable.setEnterFadeDuration(10)
         animDrawable.setExitFadeDuration(3000)
         animDrawable.start()
